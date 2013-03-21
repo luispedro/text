@@ -203,6 +203,11 @@ import Prelude (Char, Bool(..), Int, Maybe(..), String,
 #if defined(HAVE_DEEPSEQ)
 import Control.DeepSeq (NFData(rnf))
 #endif
+
+#if defined(HAVE_MTL)
+import Control.Monad.Error
+#endif
+
 #if defined(ASSERTS)
 import Control.Exception (assert)
 #endif
@@ -358,6 +363,11 @@ instance Exts.IsList Text where
     type Item Text = Char
     fromList       = pack
     toList         = unpack
+#endif
+
+#if defined(HAVE_MTL)
+instance Error Text where
+    strMsg = pack
 #endif
 
 #if defined(HAVE_DEEPSEQ)

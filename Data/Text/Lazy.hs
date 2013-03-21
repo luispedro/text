@@ -208,6 +208,9 @@ import qualified Prelude as P
 #if defined(HAVE_DEEPSEQ)
 import Control.DeepSeq (NFData(..))
 #endif
+#if defined(HAVE_MTL)
+import Control.Monad.Error.Class
+#endif
 import Data.Int (Int64)
 import qualified Data.List as L
 import Data.Char (isSpace)
@@ -366,6 +369,11 @@ instance Exts.IsList Text where
     type Item Text = Char
     fromList       = pack
     toList         = unpack
+#endif
+
+#if defined(HAVE_MTL)
+instance Error Text where
+    strMsg = pack
 #endif
 
 #if defined(HAVE_DEEPSEQ)

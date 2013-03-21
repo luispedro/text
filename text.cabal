@@ -181,6 +181,7 @@ test-suite tests
     directory,
     ghc-prim,
     quickcheck-unicode,
+    mtl >= 2.0,
     random,
     test-framework >= 0.4,
     test-framework-hunit >= 0.2,
